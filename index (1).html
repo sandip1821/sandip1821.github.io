@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The personal portfolio of Sandip Ghorai — creative work, skills, and projects." />
+  <title>Sandip Ghorai — Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #17152b; --muted: #69677a; --paper: #fbfaff; --purple: #7657f6;
+      --pink: #ff6fae; --orange: #ffb45d; --cyan: #71d9e8; --line: #ece9f5;
+      --white: #fff; --shadow: 0 20px 60px rgba(48, 35, 103, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .wrap { width: min(1120px, calc(100% - 44px)); margin: auto; }
+    .nav { position: sticky; top: 0; z-index: 20; background: rgba(251,250,255,.86); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(236,233,245,.8); }
+    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font: 700 1.22rem "Space Grotesk", sans-serif; letter-spacing: -.7px; }
+    .brand span { color: var(--purple); }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #555267; font-size: .92rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-cta, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 999px; padding: 13px 21px; color: white; background: var(--ink); font-weight: 700; transition: transform .2s, box-shadow .2s; cursor: pointer; }
+    .nav-cta:hover, .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(35,25,75,.18); }
+    .menu-btn { display: none; border: 0; background: transparent; font-size: 1.5rem; color: var(--ink); }
+    .hero { position: relative; overflow: hidden; padding: 92px 0 100px; }
+    .hero:before { content: ""; position: absolute; width: 570px; height: 570px; border-radius: 50%; right: -150px; top: -200px; background: radial-gradient(circle, rgba(255,111,174,.28), rgba(255,111,174,0) 68%); pointer-events: none; }
+    .hero:after { content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%; left: -260px; bottom: -300px; background: radial-gradient(circle, rgba(113,217,232,.32), rgba(113,217,232,0) 70%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 65px; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 8px 13px; border: 1px solid #e9e3ff; border-radius: 99px; background: #f4f0ff; color: #6546df; font-size: .82rem; font-weight: 700; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #47c99b; box-shadow: 0 0 0 4px #dff8ed; }
+    h1, h2, h3 { font-family: "Space Grotesk", sans-serif; line-height: 1.12; letter-spacing: -1.6px; }
+    h1 { max-width: 680px; margin: 23px 0 20px; font-size: clamp(3rem, 6vw, 5.3rem); }
+    .gradient-text { background: linear-gradient(100deg, #7657f6 5%, #ed65a8 55%, #ff9b54); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-copy { max-width: 560px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
+    .btn.primary { background: linear-gradient(110deg, #7657f6, #a05df0); box-shadow: 0 10px 25px rgba(118,87,246,.22); }
+    .btn.secondary { background: white; color: var(--ink); border: 1px solid var(--line); }
+    .hero-note { margin-top: 26px; color: #858196; font-size: .86rem; }
+    .art-card { position: relative; min-height: 430px; border-radius: 34px; overflow: hidden; background: linear-gradient(145deg, #8067f6 0%, #bd75e9 48%, #ff9a9d 100%); box-shadow: 0 28px 70px rgba(118,87,246,.25); }
+    .art-card:before { content: ""; position: absolute; width: 290px; height: 290px; border-radius: 50%; background: rgba(255,255,255,.18); top: -70px; right: -45px; }
+    .art-card:after { content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,194,111,.7); bottom: -80px; left: -60px; filter: blur(1px); }
+    .portrait-placeholder { position: absolute; inset: 55px 48px 0; display: flex; align-items: center; justify-content: center; }
+    .portrait-shape { width: 230px; height: 300px; border-radius: 48% 48% 30px 30px; background: linear-gradient(160deg, #ffd7c2, #f3a9ad); position: relative; box-shadow: 0 20px 40px rgba(51,30,88,.18); }
+    .portrait-shape:before { content: ""; position: absolute; width: 150px; height: 170px; border-radius: 48% 48% 45% 45%; background: #f4c2a9; top: 25px; left: 40px; box-shadow: inset 0 16px #302342; }
+    .portrait-shape:after { content: "YOUR PHOTO"; position: absolute; left: 0; right: 0; bottom: 35px; text-align: center; color: rgba(65,40,75,.65); font-size: .72rem; font-weight: 700; letter-spacing: 2px; }
+    .float-tag { position: absolute; z-index: 2; padding: 11px 15px; border-radius: 14px; background: rgba(255,255,255,.92); box-shadow: var(--shadow); font-size: .82rem; font-weight: 700; }
+    .tag-one { left: 22px; top: 70px; transform: rotate(-7deg); } .tag-two { right: 18px; bottom: 68px; transform: rotate(6deg); }
+    section { padding: 92px 0; }
+    .section-head { max-width: 650px; margin-bottom: 42px; }
+    .kicker { color: var(--purple); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+    h2 { margin: 10px 0 14px; font-size: clamp(2.2rem, 4vw, 3.4rem); }
+    .section-head p, .about-text { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
+    .about-visual { min-height: 300px; border-radius: 28px; background: linear-gradient(135deg, #dff9fb, #f2eaff 55%, #ffe3ef); display: grid; place-items: center; position: relative; overflow: hidden; }
+    .about-visual .big-mark { font: 700 8rem "Space Grotesk"; color: rgba(118,87,246,.25); }
+    .about-visual .mini-card { position: absolute; bottom: 24px; right: 22px; background: white; border-radius: 16px; padding: 13px 18px; box-shadow: var(--shadow); font-weight: 700; font-size: .86rem; }
+    .about-text { font-size: 1.02rem; }
+    .facts { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+    .fact strong { display: block; font: 700 1.55rem "Space Grotesk"; color: var(--purple); }
+    .fact span { color: #858196; font-size: .82rem; }
+    .skills-section { background: #f3f0ff; }
+    .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .skill { background: white; border: 1px solid #ebe6fb; border-radius: 18px; padding: 22px; transition: transform .2s, box-shadow .2s; }
+    .skill:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .skill-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 13px; background: #f0ebff; font-size: 1.25rem; margin-bottom: 15px; }
+    .skill h3 { font-size: 1.05rem; letter-spacing: -.3px; margin: 0 0 6px; }
+    .skill p { color: var(--muted); font-size: .85rem; margin: 0; }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .project { border: 1px solid var(--line); background: white; border-radius: 22px; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+    .project:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .project-art { height: 190px; display: grid; place-items: center; font: 700 2.2rem "Space Grotesk"; color: rgba(32,25,62,.7); }
+    .art-a { background: linear-gradient(135deg, #fbd0e3, #dcd3ff); } .art-b { background: linear-gradient(135deg, #b9f0ed, #d6dcff); } .art-c { background: linear-gradient(135deg, #ffe0b7, #ffc6bf); }
+    .project-body { padding: 22px; }
+    .project-body h3 { font-size: 1.18rem; letter-spacing: -.5px; margin: 0 0 8px; }
+    .project-body p { color: var(--muted); font-size: .9rem; margin: 0 0 16px; }
+    .chips { display: flex; gap: 7px; flex-wrap: wrap; }
+    .chip { background: #f3f0ff; color: #6b50d9; border-radius: 99px; padding: 5px 10px; font-size: .72rem; font-weight: 700; }
+    .contact-section { background: #1d1934; color: white; position: relative; overflow: hidden; }
+    .contact-section:before { content: ""; position: absolute; width: 450px; height: 450px; border-radius: 50%; background: rgba(118,87,246,.22); right: -140px; top: -200px; filter: blur(15px); }
+    .contact-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+    .contact-section .kicker { color: #b8a8ff; } .contact-section h2 { color: white; }
+    .contact-section p { color: #c4bfd6; }
+    .contact-links { display: grid; gap: 12px; margin-top: 28px; }
+    .contact-links a { color: white; opacity: .9; } .contact-links a:hover { color: #c4b6ff; }
+    .contact-form { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.13); border-radius: 24px; padding: 26px; }
+    .field { margin-bottom: 15px; } .field label { display: block; margin-bottom: 7px; font-size: .82rem; color: #ded9ef; font-weight: 600; }
+    .field input, .field textarea { width: 100%; padding: 13px 14px; color: white; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.17); border-radius: 12px; outline: none; }
+    .field input:focus, .field textarea:focus { border-color: #b8a8ff; } .field textarea { min-height: 115px; resize: vertical; }
+    .contact-form .btn { width: 100%; background: linear-gradient(100deg, #7657f6, #ed65a8); }
+    footer { padding: 23px 0; color: #858196; font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 850px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 42px; }
+      .art-card { max-width: 520px; width: 100%; margin: auto; min-height: 390px; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-visual { max-width: 520px; width: 100%; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 32px, 1120px); }
+      .nav-inner { height: 68px; }
+      .menu-btn { display: block; }
+      .nav-cta { display: none; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 22px 22px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 17px; }
+      .nav-links.open { display: flex; }
+      .hero { padding: 64px 0 72px; }
+      h1 { font-size: clamp(2.8rem, 14vw, 4rem); }
+      section { padding: 70px 0; }
+      .art-card { min-height: 340px; border-radius: 25px; }
+      .portrait-placeholder { inset: 45px 35px 0; }
+      .portrait-shape { transform: scale(.85); }
+      .skill-grid, .projects-grid { grid-template-columns: 1fr; }
+      .facts { gap: 22px; }
+      .contact-form { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">sandip<span>ghorai.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Let's talk ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Available for new opportunities</span>
+          <h1>Hi, I'm <span class="gradient-text">Sandip Ghorai.</span><br>Creative mind.<br>Big ideas.</h1>
+          <p class="hero-copy">I’m a student and creative learner who enjoys turning ideas into thoughtful, engaging digital experiences. I love learning, creating, and making things that matter.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">Explore my work <span>↗</span></a>
+            <a class="btn secondary" href="#contact">Get in touch</a>
+          </div>
+          <p class="hero-note">Student & Creative Learner · Always exploring new ideas</p>
+        </div>
+        <div class="art-card" aria-label="Decorative profile illustration">
+          <span class="float-tag tag-one">✦ Creative thinking</span>
+          <div class="portrait-placeholder"><div class="portrait-shape"></div></div>
+          <span class="float-tag tag-two">Ideas into impact ✨</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual"><div class="big-mark">✳</div><div class="mini-card">A little curious. A lot creative.</div></div>
+        <div>
+          <span class="kicker">A little about me</span>
+          <h2>Making things with <span class="gradient-text">purpose.</span></h2>
+          <p class="about-text">Hello! I’m Sandip Ghorai. I’m passionate about [your field or interests] and enjoy exploring new ideas, solving problems, and building skills every day. I believe good work comes from curiosity, consistency, and attention to detail.</p>
+          <p class="about-text">When I’m not working on a project, you’ll find me learning something new, collecting inspiration, or planning my next creative idea.</p>
+          <div class="facts">
+            <div class="fact"><strong>01+</strong><span>Years learning</span></div>
+            <div class="fact"><strong>05+</strong><span>Projects explored</span></div>
+            <div class="fact"><strong>100%</strong><span>Curiosity</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">What I bring</span>
+          <h2>Skills & <span class="gradient-text">toolkit.</span></h2>
+          <p>A mix of creative strengths and practical tools I use to bring ideas to life. Replace these examples with your own skills.</p>
+        </div>
+        <div class="skill-grid">
+          <article class="skill"><div class="skill-icon">🎨</div><h3>Creative Design</h3><p>Visual ideas, layouts, and thoughtful details.</p></article>
+          <article class="skill"><div class="skill-icon">💻</div><h3>Web Basics</h3><p>HTML, CSS, and beginner-friendly JavaScript.</p></article>
+          <article class="skill"><div class="skill-icon">📷</div><h3>Photo Editing</h3><p>Color, composition, and visual storytelling.</p></article>
+          <article class="skill"><div class="skill-icon">🚀</div><h3>Communication</h3><p>Teamwork, presenting ideas, and learning fast.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Selected work</span>
+          <h2>Things I've <span class="gradient-text">created.</span></h2>
+          <p>A few sample project cards to get you started. Add your real work, a short description, and a link to each project.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project"><div class="project-art art-a">Project 01</div><div class="project-body"><h3>Creative Brand Concept</h3><p>A visual identity concept exploring color, typography, and a clear brand personality.</p><div class="chips"><span class="chip">Design</span><span class="chip">Branding</span></div></div></article>
+          <article class="project"><div class="project-art art-b">Project 02</div><div class="project-body"><h3>Personal Website</h3><p>A clean, responsive web experience designed to introduce a person and their work.</p><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span></div></div></article>
+          <article class="project"><div class="project-art art-c">Project 03</div><div class="project-body"><h3>Photo Story</h3><p>A small collection of edited photographs built around mood, light, and storytelling.</p><div class="chips"><span class="chip">Photography</span><span class="chip">Editing</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <span class="kicker">Say hello</span>
+          <h2>Have a project<br>in <span class="gradient-text">mind?</span></h2>
+          <p>I’d love to hear what you’re working on. Send a message and let’s see what we can create together.</p>
+          <div class="contact-links">
+            <a href="mailto:hello@example.com">✉ hello@example.com</a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">↗ LinkedIn</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">↗ Instagram</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" placeholder="Alex Morgan" required></div>
+          <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="alex@example.com" required></div>
+          <div class="field"><label for="message">Your message</label><textarea id="message" name="message" placeholder="Tell me a little about your idea..." required></textarea></div>
+          <button class="btn" type="submit">Send a message ↗</button>
+          <p style="font-size:.75rem;margin:12px 0 0;color:#c4bfd6">This opens your email app with the message ready to send.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Sandip Ghorai. Made with curiosity.</span><a href="#home">Back to top ↑</a></div></footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.textContent = isOpen ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const subject = encodeURIComponent('Portfolio enquiry from ' + data.get('name'));
+      const body = encodeURIComponent('Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\n\n' + data.get('message'));
+      window.location.href = 'mailto:hello@example.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
